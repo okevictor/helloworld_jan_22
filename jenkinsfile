@@ -1,12 +1,27 @@
 pipeline {
     agent any
-     stages{
-      stage('Hello'){
-       steps {
-         echo "Hello World"
-       }
+    triggers {
+  pollSCM('* * * * *')
     }
-    
+    stages {
+        stage('build') {
+            steps {
+                echo 'Building.... '
+                sleep 5
+            }
+        }
+          
+          stage('test') {
+            steps {
+                echo 'Testing....'
+                sleep 5
+            }
+        }
+          stage('deploy') {
+            steps {
+                echo 'Deploy'
+                sleep 4
+            }
+        }
     }
-
 }
