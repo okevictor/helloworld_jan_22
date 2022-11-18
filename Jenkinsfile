@@ -19,6 +19,7 @@ pipeline {
                 sh 'mvn clean'
                 sh 'mvn install'
                 sh 'mvn package'
+                ##this is packing the job
             }
         }
         stage('Test') {
