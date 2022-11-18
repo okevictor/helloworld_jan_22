@@ -8,8 +8,9 @@ pipeline {
     registryCredential = 'jenkins-ecr-user'
     dockerimage = ''
   }
-    /*stages {
-        stage('Checkout'){
+    stages {
+        
+        /*stage('Checkout'){
             steps{
                 git branch: 'main', url: 'https://github.com/okevictor/helloworld_jan_22.git'
             }
@@ -24,11 +25,13 @@ pipeline {
                 //this is packing the artifacts
             }
         }
+        
         stage('Test') {
             steps {
                 sh 'mvn test'
             }
         }
+        
         stage('Build Image') {
             steps {
                 script{
@@ -39,6 +42,7 @@ pipeline {
                 } 
             }
         }
+        
         stage('Deploy image') {
             steps{
                 script{ 
