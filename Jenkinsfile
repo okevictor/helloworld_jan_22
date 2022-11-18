@@ -8,11 +8,11 @@ pipeline {
     registryCredential = 'jenkins-ecr-user'
     dockerimage = ''
   }
-    stages {
+    /*stages {
         stage('Checkout'){
             steps{
                 git branch: 'main', url: 'https://github.com/okevictor/helloworld_jan_22.git'
-            }
+            }*/
         }
         stage('Code Build') {
             steps {
