@@ -19,7 +19,8 @@ pipeline {
                 sh 'mvn clean'
                 sh 'mvn install'
                 sh 'mvn package'
-                ##this is packing the job
+                
+                //this is packing the artifacts
             }
         }
         stage('Test') {
@@ -31,6 +32,9 @@ pipeline {
             steps {
                 script{
                     dockerImage = docker.build registry + ":V"+ "$BUILD_NUMBER"
+                    
+                    /*This is pushing the image to my
+                    ECR repository*/
                 } 
             }
         }
