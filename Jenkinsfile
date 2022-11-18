@@ -10,11 +10,16 @@ pipeline {
   }
     stages {
         
-        /*stage('Checkout'){
+        //Checkout scm was used since I setup GitHub Webhook for this job
+        
+        stage('git repository'){
             steps{
-                git branch: 'main', url: 'https://github.com/okevictor/helloworld_jan_22.git'
+                script{
+                    checkout scm 
+                    //git branch: 'main', url: 'https://github.com/okevictor/helloworld_jan_22.git'
+                }
             }
-        }*/
+        }
         
         stage('Code Build') {
             steps {
