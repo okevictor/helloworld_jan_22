@@ -1,6 +1,6 @@
 # Pull base image 
-From tomcat:8-jre8 
+FROM httpd:2.4
+COPY ./public-html/ /usr/local/apache2/htdocs/
 
 # Maintainer 
-MAINTAINER "kserge2001@yahoo.fr" 
-#COPY ./webapp.war /usr/local/tomcat/webapps
+#MAINTAINER "kserge2001@yahoo.fr" 
