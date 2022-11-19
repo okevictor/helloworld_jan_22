@@ -5,4 +5,4 @@ COPY ./SEO_app/* /usr/local/apache2/htdocs/
 # Maintainer 
 MAINTAINER "okevictor.t@gmail.com" 
 EXPOSE 80
-CMD ["-DFOREGROUND"]
+#CMD ["-DFOREGROUND"]
