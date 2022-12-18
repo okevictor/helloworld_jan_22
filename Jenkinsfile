@@ -37,15 +37,15 @@ pipeline {
             }
         }
         
-        /***stage('Build Image') {
+        stage('Build Image') {
             steps {
                 script{
                     dockerImage = docker.build registry + ":V"+ "$BUILD_NUMBER"
                 } 
             }
-        }***/
+        }
         
-        /***stage('Deploy image') {
+        stage('Deploy image') {
             steps{
                 script{ 
                     docker.withRegistry("https://"+registry,"ecr:us-east-1:"+registryCredential) {
@@ -53,6 +53,6 @@ pipeline {
                     }
                 }
             }
-        } ***/ 
+        }
     }
 }
