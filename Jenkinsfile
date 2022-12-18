@@ -12,14 +12,14 @@ pipeline {
         
         //Checkout scm was used since I setup GitHub Webhook for this job
         
-        stage('git repository'){
+        /***stage('git repository'){
             steps{
                 script{
                     checkout scm 
                     //git branch: 'main', url: 'https://github.com/okevictor/helloworld_jan_22.git'
                 }
             }
-        }
+        }***/
         
         stage('Code Build') {
             steps {
@@ -37,7 +37,7 @@ pipeline {
             }
         }
         
-        stage('Build Image') {
+        /***stage('Build Image') {
             steps {
                 script{
                     dockerImage = docker.build registry + ":V"+ "$BUILD_NUMBER"
@@ -46,9 +46,9 @@ pipeline {
                     ECR repository*/
                 } 
             }
-        }
+        }***/
         
-        stage('Deploy image') {
+        /***stage('Deploy image') {
             steps{
                 script{ 
                     docker.withRegistry("https://"+registry,"ecr:us-east-1:"+registryCredential) {
@@ -56,6 +56,6 @@ pipeline {
                     }
                 }
             }
-        }  
+        } ***/ 
     }
 }
