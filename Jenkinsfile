@@ -94,7 +94,7 @@ pipeline {
             }
         }
         
-        stage('Deploy image') {
+        /***stage('Deploy image') {
             steps{
                 script{ 
                     docker.withRegistry('https://'+registry,'ecr:us-east-1:'+registryCredential) {
@@ -102,6 +102,17 @@ pipeline {
                     }
                 }
             }
+        }***/
+        
+         // Uploading Docker images into AWS ECR
+        stage('Pushing to ECR') {
+            steps{
+                script {
+                    sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 317396387403.dkr.ecr.us-east-1.amazonaws.com'
+                    sh 'docker push 317396387403.dkr.ecr.us-east-1.amazonaws.com/jenkins-job'
+                }
+            }
         }
+
     }
 }
