@@ -7,6 +7,14 @@ pipeline {
     registry = '317396387403.dkr.ecr.us-east-1.amazonaws.com/jenkins-job'
     registryCredential = 'jenkins-ecr-user'
     dockerimage = ''
+        
+     environment {
+        NEXUS_VERSION = "nexus3"
+        NEXUS_PROTOCOL = "http"
+        NEXUS_URL = "45.56.92.91:8081"
+        NEXUS_REPOSITORY = "devop-CI-nexus"
+        NEXUS_CREDENTIAL_ID = "nexus-user-credentials"
+    }
   }
     stages {
         
@@ -38,13 +46,7 @@ pipeline {
         }
         
         
-        environment {
-        NEXUS_VERSION = "nexus3"
-        NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "45.56.92.91:8081"
-        NEXUS_REPOSITORY = "devop-CI-nexus"
-        NEXUS_CREDENTIAL_ID = "nexus-user-credentials"
-    }
+       
         
        /*** stage('Build Image') {
             steps {
