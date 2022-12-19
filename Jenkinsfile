@@ -37,15 +37,24 @@ pipeline {
             }
         }
         
-        stage('Build Image') {
+        
+        environment {
+        NEXUS_VERSION = "nexus3"
+        NEXUS_PROTOCOL = "http"
+        NEXUS_URL = "45.56.92.91:8081"
+        NEXUS_REPOSITORY = "devop-CI-nexus"
+        NEXUS_CREDENTIAL_ID = "nexus-user-credentials"
+    }
+        
+       /*** stage('Build Image') {
             steps {
                 script{
                     dockerImage = docker.build registry + ":V"+ "$BUILD_NUMBER"
                 } 
             }
-        }
+        }***/
         
-        stage('Deploy image') {
+        /***stage('Deploy image') {
             steps{
                 script{ 
                     docker.withRegistry('https://'+registry,'ecr:us-east-1:'+registryCredential) {
@@ -53,6 +62,6 @@ pipeline {
                     }
                 }
             }
-        }
+        }***/
     }
 }
