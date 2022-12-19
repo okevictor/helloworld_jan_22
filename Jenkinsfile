@@ -46,10 +46,9 @@ pipeline {
             }
         }
        
-        stage("Publish to Nexus Repository Manager") {
+       stage("Publish to Nexus Repository Manager") {
             steps {
                 echo 'Publish to Nexus Repository Manager...'
-                dir('./fastfood_BackEnd/'){
                     script {
                     pom = readMavenPom file: "pom.xml";
                     filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
@@ -83,8 +82,7 @@ pipeline {
                     }
                 }
             }
-        }
-    }
+        
         
        
         
