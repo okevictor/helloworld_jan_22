@@ -3,10 +3,10 @@ pipeline {
     tools{
         maven 'M2_HOME'
     }
-    environment {
+    /***environment {
     registry = '317396387403.dkr.ecr.us-east-1.amazonaws.com/jenkins-job'
     registryCredential = 'jenkins-ecr-user'
-    dockerimage = ''
+    dockerimage = ''***/
         
      environment {
         NEXUS_VERSION = "nexus3"
