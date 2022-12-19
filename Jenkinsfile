@@ -3,19 +3,19 @@ pipeline {
     tools{
         maven 'M2_HOME'
     }
-    environment {
+    /***environment {
        registry = '317396387403.dkr.ecr.us-east-1.amazonaws.com/jenkins-job'
        registryCredential = 'jenkins-ecr-user'
        dockerimage = ''
-    }
+    }***?
         
-     /***environment {
+     environment {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "45.56.92.91:8081"
         NEXUS_REPOSITORY = "devop-CI-nexus"
         NEXUS_CREDENTIAL_ID = "nexus-user-credentials"
-    }***/
+    }
   
     stages {
         
@@ -46,7 +46,7 @@ pipeline {
             }
         }
        
-       /***stage("Publish to Nexus Repository Manager") {
+       stage("Publish to Nexus Repository Manager") {
             steps {
                 echo 'Publish to Nexus Repository Manager...'
                     script {
@@ -81,18 +81,18 @@ pipeline {
                         }
                     }
                 }
-            }***/
+            }
         
         
        
         
-       stage('Build Image') {
+       /***stage('Build Image') {
             steps {
                 script{
                     dockerImage = docker.build registry + ":V"+ "$BUILD_NUMBER"
                 } 
             }
-        }
+        }***/
         
         /***stage('Deploy image') {
             steps{
@@ -105,14 +105,14 @@ pipeline {
         }***/
         
          // Uploading Docker images into AWS ECR
-        stage('Pushing to ECR') {
+       /*** stage('Pushing to ECR') {
             steps{
                 script {
                     sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 317396387403.dkr.ecr.us-east-1.amazonaws.com'
                     sh "docker push 317396387403.dkr.ecr.us-east-1.amazonaws.com/jenkins-job" + ':V'+ '$BUILD_NUMBER'
                 }
             }
-        }
+        }***/
 
     }
 }
