@@ -6,7 +6,8 @@ pipeline {
     /***environment {
     registry = '317396387403.dkr.ecr.us-east-1.amazonaws.com/jenkins-job'
     registryCredential = 'jenkins-ecr-user'
-    dockerimage = ''***/
+    dockerimage = ''
+}**/
         
      environment {
         NEXUS_VERSION = "nexus3"
@@ -15,7 +16,7 @@ pipeline {
         NEXUS_REPOSITORY = "devop-CI-nexus"
         NEXUS_CREDENTIAL_ID = "nexus-user-credentials"
     }
-  }
+  
     stages {
         
         //Checkout scm was used since I setup GitHub Webhook for this job
@@ -66,4 +67,4 @@ pipeline {
             }
         }***/
     }
-
+}
