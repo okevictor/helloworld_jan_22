@@ -9,13 +9,13 @@ pipeline {
        dockerimage = ''
     }
         
-     environment {
+     /***environment {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "45.56.92.91:8081"
         NEXUS_REPOSITORY = "devop-CI-nexus"
         NEXUS_CREDENTIAL_ID = "nexus-user-credentials"
-    }
+    }***/
   
     stages {
         
